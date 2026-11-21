@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "io.github.cayocan/mefcs-mcp",
+  "description": "Control M-VAVE Tank-G pedals (presets, amp captures, cab IRs) and search/install TONE3000 tones, through the M-EFCS USB bridge.",
+  "repository": { "url": "https://github.com/cayocan/mefcs-mcp", "source": "github" },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "mefcs-mcp",
+      "version": "0.1.0",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        { "name": "MEFCS_BRIDGE_PATH", "description": "Full path to mefcs_ks_bridge.exe inside the M-EFCS install folder (auto-detected in standard locations)", "isRequired": false },
+        { "name": "MEFCS_BACKUP_DIR", "description": "Folder for automatic preset backups", "isRequired": false },
+        { "name": "TONE3000_CLIENT_ID", "description": "TONE3000 publishable key (optional, can also be saved at runtime)", "isRequired": false },
+        { "name": "TONE3000_DOWNLOAD_DIR", "description": "Folder for downloaded captures and IRs", "isRequired": false }
+      ]
+    }
+  ]
+}

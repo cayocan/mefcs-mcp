@@ -1,0 +1,16 @@
+node_modules/
+dist/
+backups/
+downloads/
+*.log
+!test/fixtures/*.log
+
+# Personal and reverse-engineering material (contains M-EFCS binaries and private presets)
+re/
+backup-presets/
+
+# Third-party captures from TONE3000 and uploads derived from them: kept locally, not redistributed
+test/fixtures/mesa.nam
+test/fixtures/ir8.wav
+test/fixtures/ir8_upload.bin
+test/fixtures/upload-session.log
