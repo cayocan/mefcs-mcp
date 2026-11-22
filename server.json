@@ -3,12 +3,12 @@
   "name": "io.github.cayocan/mefcs-mcp",
   "description": "Control M-VAVE Tank-G pedals and install TONE3000 tones through the M-EFCS USB bridge",
   "repository": { "url": "https://github.com/cayocan/mefcs-mcp", "source": "github" },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "mefcs-mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "transport": { "type": "stdio" },
       "environmentVariables": [
         { "name": "MEFCS_BRIDGE_PATH", "description": "Full path to mefcs_ks_bridge.exe inside the M-EFCS install folder (auto-detected in standard locations)", "isRequired": false },

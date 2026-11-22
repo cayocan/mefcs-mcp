@@ -156,7 +156,7 @@ const changesSchema = {
   color: z.object({ r: z.number().int().min(0).max(255), g: z.number().int().min(0).max(255), b: z.number().int().min(0).max(255) }).optional(),
 };
 
-const server = new McpServer({ name: "mefcs-mcp", version: "0.1.0" });
+const server = new McpServer({ name: "mefcs-mcp", version: "0.1.1" });
 
 server.registerTool(
   "tankg_connect",

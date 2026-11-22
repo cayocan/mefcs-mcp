@@ -311,6 +311,8 @@ npm run build      # TypeScript -> dist/
 npm test           # golden tests against captured M-EFCS traffic + TONE3000 client tests
 node scripts/smoke-test.mjs out.atkg   # live read-only test on a real pedal (M-EFCS closed)
 node scripts/normalize-knobs.mjs --dry-run
+node scripts/call-tool.mjs --list                           # list the tools over real MCP (stdio)
+node scripts/call-tool.mjs tone3000_search "{\"query\":\"Fender Twin\"}"   # call one tool like an AI client does
 ```
 
 Two golden tests compare against third-party TONE3000 captures that are not redistributed in this repo. They are skipped automatically when `test/fixtures/mesa.nam` / `ir8.wav` are absent.

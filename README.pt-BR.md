@@ -311,6 +311,8 @@ npm run build      # TypeScript -> dist/
 npm test           # testes contra tráfego real do M-EFCS + testes do cliente TONE3000
 node scripts/smoke-test.mjs saida.atkg   # teste ao vivo, só leitura, com o pedal (M-EFCS fechado)
 node scripts/normalize-knobs.mjs --dry-run
+node scripts/call-tool.mjs --list                           # lista as ferramentas via MCP de verdade (stdio)
+node scripts/call-tool.mjs tone3000_search "{\"query\":\"Fender Twin\"}"   # chama uma ferramenta como um cliente de IA faz
 ```
 
 Dois testes comparam com capturas de terceiros do TONE3000 que não são redistribuídas neste repositório. Eles são pulados automaticamente quando `test/fixtures/mesa.nam` / `ir8.wav` não existem.
