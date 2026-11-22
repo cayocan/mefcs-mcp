@@ -2,7 +2,7 @@
 
 # mefcs-mcp
 
-An [MCP](https://modelcontextprotocol.io) server that lets AI assistants (Claude, Cursor, VS Code Copilot, Gemini CLI, Codex and any other MCP client) control an **M-VAVE Tank-G** guitar pedal and pull tones from **TONE3000**.
+An [MCP](https://modelcontextprotocol.io) server that lets AI assistants (Claude, Cursor, VS Code Copilot, Gemini CLI, Codex and any other MCP client) control an **M-VAVE Tank-G** guitar pedal (the only supported pedal for now; see [Compatibility](#compatibility)) and pull tones from **TONE3000**.
 
 It talks to the pedal over USB with the same protocol as the official **M-EFCS** app. The protocol is reverse engineered and documented in [docs/PROTOCOL.md](docs/PROTOCOL.md). It uses the USB helper that ships with M-EFCS, so nothing has to be installed on the pedal.
 
@@ -12,20 +12,41 @@ It talks to the pedal over USB with the same protocol as the official **M-EFCS**
 
 ## Contents
 
-1. [What it can do](#what-it-can-do)
-2. [Requirements](#requirements)
-3. [Installation](#installation)
-4. [Connecting it to an AI client](#connecting-it-to-an-ai-client)
-5. [Configuration](#configuration)
-6. [TONE3000 setup](#tone3000-setup)
-7. [Tool reference](#tool-reference)
-8. [Example prompts](#example-prompts)
-9. [Safety](#safety)
-10. [How it works](#how-it-works)
-11. [Troubleshooting](#troubleshooting)
-12. [Development](#development)
-13. [Publishing](#publishing)
-14. [License](#license)
+1. [Compatibility](#compatibility)
+2. [What it can do](#what-it-can-do)
+3. [Requirements](#requirements)
+4. [Installation](#installation)
+5. [Connecting it to an AI client](#connecting-it-to-an-ai-client)
+6. [Configuration](#configuration)
+7. [TONE3000 setup](#tone3000-setup)
+8. [Tool reference](#tool-reference)
+9. [Example prompts](#example-prompts)
+10. [Safety](#safety)
+11. [How it works](#how-it-works)
+12. [Troubleshooting](#troubleshooting)
+13. [Development](#development)
+14. [Publishing](#publishing)
+15. [License](#license)
+
+---
+
+## Compatibility
+
+> **Right now this server works only with the M-VAVE Tank-G (v2).** Other M-VAVE pedals are not supported yet.
+
+It was built and tested with:
+
+| | Tested version |
+|---|---|
+| Pedal | M-VAVE **Tank-G v2** |
+| Pedal firmware | **098** (the pedal identifies itself as `TANK-Gv2_098`) |
+| M-EFCS app | **3.11.2015** for Windows (`m_efcs.exe`, which provides `mefcs_ks_bridge.exe`) |
+| Operating system | Windows 11 Pro (build 26300) |
+| Node.js | 20.20.2 |
+
+Other firmware or M-EFCS versions may work, but they have not been tested. A newer M-EFCS can change its USB helper or the pedal protocol. If something breaks on your setup, please [open an issue](https://github.com/cayocan/mefcs-mcp/issues) with your firmware and M-EFCS versions.
+
+**Roadmap:** support for the M-VAVE **Black Box**, the **MK-300** and other M-VAVE pedals is planned. Each pedal needs its own driver, built from captures of its USB traffic, so owners of those pedals who want to help with captures are welcome (see [Development](#development)).
 
 ---
 
@@ -294,7 +315,7 @@ node scripts/normalize-knobs.mjs --dry-run
 
 Two golden tests compare against third-party TONE3000 captures that are not redistributed in this repo. They are skipped automatically when `test/fixtures/mesa.nam` / `ir8.wav` are absent.
 
-To add another M-VAVE device (MK300, Tank-B, …), add a driver under `src/devices/` with that device's memory map and model format. The framing and the bridge are shared. Capture its traffic first (see `docs/PROTOCOL.md`).
+To add another M-VAVE device (Black Box, MK-300, …), add a driver under `src/devices/` with that device's memory map and model format. The framing and the bridge are shared. Capture its traffic first (see `docs/PROTOCOL.md`).
 
 ## Publishing
 

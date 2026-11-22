@@ -2,7 +2,7 @@
 
 # mefcs-mcp
 
-Um servidor [MCP](https://modelcontextprotocol.io) que permite que assistentes de IA (Claude, Cursor, VS Code Copilot, Gemini CLI, Codex e qualquer outro cliente MCP) controlem uma pedaleira **M-VAVE Tank-G** e busquem timbres no **TONE3000**.
+Um servidor [MCP](https://modelcontextprotocol.io) que permite que assistentes de IA (Claude, Cursor, VS Code Copilot, Gemini CLI, Codex e qualquer outro cliente MCP) controlem uma pedaleira **M-VAVE Tank-G** (a única suportada por enquanto; veja [Compatibilidade](#compatibilidade)) e busquem timbres no **TONE3000**.
 
 Ele conversa com o pedal pelo USB usando o mesmo protocolo do app oficial **M-EFCS**. O protocolo foi descoberto por engenharia reversa e está documentado em [docs/PROTOCOL.md](docs/PROTOCOL.md). O servidor usa o programa auxiliar de USB que vem com o M-EFCS, então não é preciso instalar nada no pedal.
 
@@ -12,20 +12,41 @@ Ele conversa com o pedal pelo USB usando o mesmo protocolo do app oficial **M-EF
 
 ## Sumário
 
-1. [O que ele faz](#o-que-ele-faz)
-2. [Requisitos](#requisitos)
-3. [Instalação](#instalação)
-4. [Conectando a um cliente de IA](#conectando-a-um-cliente-de-ia)
-5. [Configuração](#configuração)
-6. [Configurando o TONE3000](#configurando-o-tone3000)
-7. [Referência das ferramentas](#referência-das-ferramentas)
-8. [Exemplos de pedidos](#exemplos-de-pedidos)
-9. [Segurança](#segurança)
-10. [Como funciona](#como-funciona)
-11. [Solução de problemas](#solução-de-problemas)
-12. [Desenvolvimento](#desenvolvimento)
-13. [Publicação](#publicação)
-14. [Licença](#licença)
+1. [Compatibilidade](#compatibilidade)
+2. [O que ele faz](#o-que-ele-faz)
+3. [Requisitos](#requisitos)
+4. [Instalação](#instalação)
+5. [Conectando a um cliente de IA](#conectando-a-um-cliente-de-ia)
+6. [Configuração](#configuração)
+7. [Configurando o TONE3000](#configurando-o-tone3000)
+8. [Referência das ferramentas](#referência-das-ferramentas)
+9. [Exemplos de pedidos](#exemplos-de-pedidos)
+10. [Segurança](#segurança)
+11. [Como funciona](#como-funciona)
+12. [Solução de problemas](#solução-de-problemas)
+13. [Desenvolvimento](#desenvolvimento)
+14. [Publicação](#publicação)
+15. [Licença](#licença)
+
+---
+
+## Compatibilidade
+
+> **Por enquanto este servidor funciona só com a M-VAVE Tank-G (v2).** As outras pedaleiras da M-VAVE ainda não são suportadas.
+
+Ele foi feito e testado com:
+
+| | Versão testada |
+|---|---|
+| Pedal | M-VAVE **Tank-G v2** |
+| Firmware do pedal | **098** (o pedal se identifica como `TANK-Gv2_098`) |
+| App M-EFCS | **3.11.2015** para Windows (`m_efcs.exe`, que traz o `mefcs_ks_bridge.exe`) |
+| Sistema | Windows 11 Pro (build 26300) |
+| Node.js | 20.20.2 |
+
+Outras versões de firmware ou do M-EFCS podem funcionar, mas não foram testadas. Um M-EFCS mais novo pode mudar o programa auxiliar de USB ou o protocolo do pedal. Se algo quebrar no seu equipamento, [abra uma issue](https://github.com/cayocan/mefcs-mcp/issues) informando as versões do firmware e do M-EFCS.
+
+**Próximos passos:** está nos planos suportar a **Black Box**, a **MK-300** e outras pedaleiras da M-VAVE. Cada pedal precisa do seu próprio driver, feito a partir de capturas do tráfego USB dele, então quem tem esses pedais e quiser ajudar com capturas é bem-vindo (veja [Desenvolvimento](#desenvolvimento)).
 
 ---
 
@@ -294,7 +315,7 @@ node scripts/normalize-knobs.mjs --dry-run
 
 Dois testes comparam com capturas de terceiros do TONE3000 que não são redistribuídas neste repositório. Eles são pulados automaticamente quando `test/fixtures/mesa.nam` / `ir8.wav` não existem.
 
-Para adicionar outro aparelho M-VAVE (MK300, Tank-B, …), crie um driver em `src/devices/` com o mapa de memória e o formato de modelo dele. O enquadramento e a ponte são compartilhados. Antes, capture o tráfego do aparelho (veja `docs/PROTOCOL.md`).
+Para adicionar outro aparelho M-VAVE (Black Box, MK-300, …), crie um driver em `src/devices/` com o mapa de memória e o formato de modelo dele. O enquadramento e a ponte são compartilhados. Antes, capture o tráfego do aparelho (veja `docs/PROTOCOL.md`).
 
 ## Publicação
 

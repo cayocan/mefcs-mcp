@@ -1,5 +1,5 @@
 /**
- * Golden tests: compare what this package generates with SysEx captured from M-EFCS v98.
+ * Golden tests: compare what this package generates with SysEx captured from M-EFCS 3.11.2015.
  * Run: npm run build && npm test
  */
 import { test } from "node:test";

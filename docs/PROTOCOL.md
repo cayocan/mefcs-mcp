@@ -1,6 +1,6 @@
 # M-EFCS ↔ Tank-G protocol (reverse engineered)
 
-Captured on 2026-11-21 from M-EFCS v98 and a Tank-G v2 (firmware reports `version=98`). The captures came from a logging proxy placed in front of `mefcs_ks_bridge.exe` (source in `re/bridge-proxy/` of the working folder).
+Captured on 2026-11-21 from M-EFCS 3.11.2015 (Windows) and a Tank-G v2 running firmware 098 (identity string `TANK-Gv2_098`). The captures came from a logging proxy placed in front of `mefcs_ks_bridge.exe` (source in `re/bridge-proxy/` of the working folder).
 
 ## 1. Bridge (`mefcs_ks_bridge.exe`)
 

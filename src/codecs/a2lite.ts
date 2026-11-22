@@ -1,7 +1,7 @@
 /**
  * NAM (.nam, A2 SlimmableContainer) -> Tank-G "A2 Lite (Original)" amp model buffer.
  *
- * Reverse engineered from M-EFCS v98 uploads (see docs/PROTOCOL.md). The device receives the
+ * Reverse engineered from M-EFCS 3.11.2015 uploads (see docs/PROTOCOL.md). The device receives the
  * weights of the *lite* WaveNet submodel unchanged except for convolution transposition, plus a
  * precomputed zero-input steady state used to prime the dilated convolution buffers.
  */
